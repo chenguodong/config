@@ -1,0 +1,43 @@
+
+server:
+  port: 9001
+
+spring:
+  application:
+    name: api-config-server-provider-payment
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+  cloud:
+    consul:
+      host: localhost
+      #host: 39.104.208.177
+      port: 8500
+      discovery:
+        #tags: version=1.0,author=chen
+        #healthCheckPath: /info.json
+        #healthCheckInterval: 5s
+        #instanceId: ${spring.application.name}  #:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+        service-name: ${spring.application.name}
+        heartbeat:
+          enabled: true
+    config:
+      server:
+        native:
+          search-locations: classpath:properties/application-pro.properties
+    rabbitmq:
+      #virtual-host: /event
+      #username: root
+      #password: Hndss@20
+      #host: 172.30.37.25
+
+      #host: localhost
+      #port: 5672
+      #username: guest
+      #password: guest
+
+      host: 39.104.208.177
+      port: 5672
+      username: admin
+      password: admin
